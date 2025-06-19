@@ -16,8 +16,12 @@ class CourseFactory extends Factory
      */
     public function definition(): array
     {
+        $subject = fake()->words(rand(1, 2), true);
         return [
-            //
+            'subject' => $subject,
+            'course_code' => strtoupper(fake()->bothify('CS###')),
+            'credits' => fake()->numberBetween(1, 4),
+            'description' => fake()->sentence(rand(1, 5)),
         ];
     }
 }

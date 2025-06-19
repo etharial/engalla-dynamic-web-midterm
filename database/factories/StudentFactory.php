@@ -17,7 +17,11 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'first_name' => fake()->firstName(),
+            'last_name' => fake()->lastName(),
+            'program' => fake()->randomElement(['BSCS', 'BSIT', 'BSIS']),
+            'enrollment_year' => fake()->year(),
+            'birthday' => fake()->date('Y-m-d', '-18 years'),
         ];
     }
 }

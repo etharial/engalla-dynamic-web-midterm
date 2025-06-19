@@ -17,7 +17,11 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'first_name' => fake()->firstName(),
+            'last_name' => fake()->lastName(),
+            'user_name' => fake()->unique()->userName(),
+            'password' => bcrypt('password'),
+            'registration_date' => fake()->dateTimeBetween('-2 years'),
         ];
     }
 }

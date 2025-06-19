@@ -16,8 +16,10 @@ class RoleFactory extends Factory
      */
     public function definition(): array
     {
+        $name = fake()->unique()->randomElement(['Student', 'Teacher', 'Admin']);
         return [
-            //
+            'role_name' => $name,
+            'description' => fake()->sentence(rand(1, 4)),
         ];
     }
 }

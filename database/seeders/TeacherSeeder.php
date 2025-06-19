@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use app\Models\User;
+use app\Models\Teacher;
 
 class TeacherSeeder extends Seeder
 {
@@ -12,6 +14,17 @@ class TeacherSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $users = User::all();
+
+        if ($users->count() === 0) {
+            echo "Please run UserSeeder first.\n";
+            return;
+        }
+
+        User::inRandomOrder()->take(5)->get()->each(function ($user) {
+            Teacher::factory()->create([
+                'user_id' => $user->id,
+            ]);
+        });
     }
 }

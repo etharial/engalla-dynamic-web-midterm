@@ -17,7 +17,11 @@ class TeacherFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'first_name' => fake()->firstName(),
+            'last_name' => fake()->lastName(),
+            'email' => fake()->unique()->safeEmail(),
+            'department' => fake()->randomElement(['CS', 'IT', 'IS']),
+            'birthday' => fake()->date('Y-m-d', '-25 years'),
         ];
     }
 }
