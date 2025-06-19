@@ -21,7 +21,7 @@ class TeacherSeeder extends Seeder
             return;
         }
 
-        User::inRandomOrder()->take(5)->get()->each(function ($user) {
+        User::inRandomOrder()->take(7)->get()->each(function ($user) {
             Teacher::factory()->create([
                 'user_id' => $user->id,
             ]);

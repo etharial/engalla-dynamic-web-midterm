@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             return;
         }
 
-        User::factory(10)->create()->each(function ($user) use ($roles) {
+        User::factory(50)->create()->each(function ($user) use ($roles) {
             $user->roles()->attach($roles->random()->id);
         });
     }

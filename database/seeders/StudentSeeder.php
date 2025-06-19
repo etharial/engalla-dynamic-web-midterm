@@ -22,7 +22,7 @@ class StudentSeeder extends Seeder
         }
 
         // Assign a user to each student
-        foreach ($users->take(10) as $user) {
+        foreach ($users->take(50) as $user) {
             Student::factory()->create([
                 'user_id' => $user->id,
             ]);
