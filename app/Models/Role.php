@@ -10,4 +10,6 @@ class Role extends Model
     public function posts(): BelongsToMany {
         return $this->belongsToMany(User::class, 'user_role');
     }
+    
+    protected $fillable = ['role_name', 'description'];
 }

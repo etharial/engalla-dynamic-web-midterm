@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use app\Models\User;
-use app\Models\Role;
+use App\Models\User;
+use App\Models\Role;
 
 class UserSeeder extends Seeder
 {

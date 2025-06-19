@@ -17,6 +17,8 @@ return new class extends Migration
             $table->dateTime('time_slot')->comment('time slot of the schedule.');
             $table->string('room')->comment('room location in schedule.')->max(20);
             $table->integer('term')->comment('class term number.');
+            $table->foreignId('course_id')->constrained()->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

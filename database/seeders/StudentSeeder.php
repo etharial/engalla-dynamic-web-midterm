@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use app\Models\Student;
-use app\Models\Course;
+use App\Models\Student;
+use App\Models\User;
 
 class StudentSeeder extends Seeder
 {
@@ -14,15 +14,18 @@ class StudentSeeder extends Seeder
      */
     public function run(): void
     {
-        $courses = Course::all();
+        $users = User::all();
 
-        if ($courses->count() === 0) {
-            echo "Please run CourseSeeder first.\n";
+        if ($users->count() === 0) {
+            echo "Please run UserSeeder first.\n";
             return;
         }
 
-        Student::factory(15)->create()->each(function ($student) use ($courses) {
-            $student->courses()->attach($courses->random(rand(2, 4))->pluck('id'));
-        });
+        // Assign a user to each student
+        foreach ($users->take(10) as $user) {
+            Student::factory()->create([
+                'user_id' => $user->id,
+            ]);
+        }
     }
 }
